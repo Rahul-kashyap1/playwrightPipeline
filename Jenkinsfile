@@ -17,7 +17,14 @@ pipeline {
                 '''
             }
         }
-
+        stage('Install playwright') {
+            steps {
+                // Install project dependencies
+                bat '''
+                npx playwright install
+                '''
+            }
+        }
         stage('Run Playwright Tests') {
             steps {
                 // Run Playwright tests
