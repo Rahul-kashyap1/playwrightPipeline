@@ -1,9 +1,24 @@
 pipeline {
     agent any
     stages {
-        stage('Run Tests') {
+        stage('Checkout') {
             steps {
-                bat 'echo Running on Windows'
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
             }
         }
     }
