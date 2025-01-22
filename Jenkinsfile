@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 // Clone the repository
-                git branch: 'main', url: 'https://github.com/Rahul-kashyap1/playwrightPipeline.git'
+                git branch: 'optimization', url: 'https://github.com/Rahul-kashyap1/playwrightPipeline.git'
             }
         }
 
