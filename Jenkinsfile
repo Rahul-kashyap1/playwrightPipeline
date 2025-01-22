@@ -2,13 +2,19 @@ pipeline {
     agent any
 
     stages {
+        // stage('Checkout Code') {
+        //     steps {
+        //         // Checkout code from the repository
+        //         checkout scm
+        //     }
+        // }
+
         stage('Checkout Code') {
             steps {
-                // Checkout code from the repository
-                checkout scm
+                // Replace with your Git repository URL and branch
+                git branch: 'main', url: 'https://github.com/Rahul-kashyap1/playwrightPipeline.git'
             }
         }
-
         stage('Install Dependencies') {
             steps {
                 // Install project dependencies
