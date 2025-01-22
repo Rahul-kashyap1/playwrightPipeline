@@ -12,7 +12,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Install project dependencies
-                sh '''
+                bat '''
                 npm install
                 '''
             }
@@ -21,7 +21,7 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
                 // Run Playwright tests
-                sh '''
+                bat '''
                 npx playwright test
                 '''
             }
