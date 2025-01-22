@@ -1,25 +1,42 @@
 pipeline {
     agent any
+
     stages {
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
+                // Checkout code from the repository
                 checkout scm
             }
         }
-        stage('Build') {
+
+        stage('Install Dependencies') {
             steps {
-                echo 'Building...'
+                // Install project dependencies
+                sh '''
+                npm install
+                '''
             }
         }
-        stage('Test') {
+
+        stage('Run Playwright Tests') {
             steps {
-                echo 'Testing...'
+                // Run Playwright tests
+                sh '''
+                npx playwright test
+                '''
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-            }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished!'
+        }
+        success {
+            echo 'Tests ran successfully.'
+        }
+        failure {
+            echo 'Tests failed. Check the logs for details.'
         }
     }
 }
